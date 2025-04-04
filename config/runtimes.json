@@ -1,0 +1,109 @@
+{
+    "bash": {
+        "container": "debian:latest",
+        "mimeTypes": [
+            "application/x-sh",
+            "application/x-bash",
+            "text/x-sh",
+            "text/x-shellscript"
+        ]
+    },
+    "php": {
+        "container": "php:latest",
+        "mimeTypes": [
+            "application/x-httpd-php",
+            "application/x-php",
+            "text/x-php"
+        ]
+    },
+    "python": {
+        "container": "python:latest",
+        "mimeTypes": [
+            "application/x-python-code",
+            "application/x-python",
+            "text/x-python"
+        ]
+    },
+    "ruby": {
+        "container": "ruby:latest",
+        "mimeTypes": [
+            "application/x-ruby",
+            "text/x-ruby"
+        ]
+    },
+    "javascript": {
+        "container": "node:latest",
+        "mimeTypes": [
+            "application/javascript",
+            "text/javascript",
+            "application/x-javascript"
+        ]
+    },
+    "go": {
+        "container": "golang:latest",
+        "mimeTypes": [
+            "application/x-go",
+            "text/x-go",
+            "text/x-go-source"
+        ]
+    },
+    "c": {
+        "container": "gcc:latest",
+        "mimeTypes": [
+            "text/x-c",
+            "text/x-c-header",
+            "application/x-c",
+            "application/x-c-header"
+        ]
+    },
+    "cpp": {
+        "container": "gcc:latest",
+        "mimeTypes": [
+            "text/x-c++"
+        ]
+    },
+    "csharp": {
+        "container": "mcr.microsoft.com/dotnet/sdk:latest",
+        "mimeTypes": [
+            "application/x-csharp",
+            "text/x-csharp",
+            "text/x-csharp-source"
+        ]
+    },
+    "vbnet": {
+        "container": "mcr.microsoft.com/dotnet/sdk:latest",
+        "mimeTypes": [
+            "text/x-vb",
+            "application/x-vb"
+        ]
+    },
+    "java": {
+        "container": "openjdk:latest",
+        "mimeTypes": [
+            "text/x-java-source",
+            "text/x-java",
+            "application/x-java-source",
+            "application/x-java",
+            "application/java"
+        ]
+    },
+    "rust": {
+        "container": "rust:latest",
+        "mimeTypes": [
+            "text/x-rust"
+        ]
+    },
+    "swift": {
+        "container": "swift:latest",
+        "mimeTypes": [
+            "text/x-swift"
+        ]
+    },
+    "typescript": {
+        "container": "mcr.microsoft.com/devcontainers/typescript-node",
+        "mimeTypes": [
+            "application/typescript",
+            "text/typescript"
+        ]
+    }
+}
