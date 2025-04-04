@@ -2,6 +2,9 @@ package snippetd
 
 import (
 	"context"
+	"fmt"
+	"os"
+	"path/filepath"
 
 	"github.com/containerd/containerd"
 	"github.com/containerd/containerd/namespaces"
@@ -76,4 +79,42 @@ func (runtime *CodeRuntime) removeContainers() error {
 	}
 
 	return nil
+}
+
+func (runtime *CodeRuntime) Execute(executionUuid, sourceCode string, config RuntimeConfig) CodeExecution {
+	ctx := namespaces.WithNamespace(context.Background(), snippetNamespace)
+
+	// 1. Pull the image
+	_, err := runtime.client.Pull(ctx, config.Container, containerd.WithPullUnpack)
+	if err != nil {
+		return CodeExecution{StandardError: fmt.Sprintf("Failed to pull image: %v", err)}
+	}
+
+	// 2. Create a temporary directory with a UUID
+	tempDir, err := os.MkdirTemp("", executionUuid)
+	if err != nil {
+		return CodeExecution{StandardError: fmt.Sprintf("Failed to create temp dir: %v", err)}
+	}
+	defer os.RemoveAll(tempDir) // Clean up after execution
+
+	// 3. Write the source code to the temp directory
+	sourcePath := filepath.Join(tempDir, config.FileName)
+	err = os.WriteFile(sourcePath, []byte(sourceCode), 0777)
+	if err != nil {
+		return CodeExecution{StandardError: fmt.Sprintf("Failed to write source code to file: %v", err)}
+	}
+
+	scriptPath := filepath.Join(tempDir, "exec.sh")
+	err = os.WriteFile(scriptPath, []byte(config.RunScript), 0777)
+	if err != nil {
+		return CodeExecution{StandardError: fmt.Sprintf("Failed to write run script to file: %v", err)}
+	}
+
+	return CodeExecution{}
+}
+
+func (runtime *CodeRuntime) Close() {
+	if runtime.client != nil {
+		runtime.client.Close()
+	}
 }

@@ -1,9 +1,10 @@
 package snippetd
 
 type CodeExecution struct {
-	Id         string `json:"id"`
-	Container  string `json:"container"`
-	Language   string `json:"language"`
-	SourceCode string `json:"source_code"`
-	TempPath   string `json:"-"`
+	Uuid           string `json:"uuid"`
+	Language       string `json:"language"`
+	StandardOutput string `json:"standard_output,omitempty"`
+	StandardError  string `json:"standard_error,omitempty"`
+	Completed      bool   `json:"completed,omitempty"`
+	ExitCode       int    `json:"exit_code,omitempty"`
 }
