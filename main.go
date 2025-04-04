@@ -62,7 +62,9 @@ func main() {
 	defer codeRuntime.Close()
 
 	router.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "Hello, World!")
+		c.JSON(http.StatusOK, gin.H{
+			"message": "Snipper service operational",
+		})
 	})
 
 	router.GET("/runtimes", func(c *gin.Context) {
@@ -107,10 +109,7 @@ func main() {
 		result := codeRuntime.Execute(executionUuid, string(sourceCode), runtimeConfig)
 
 		// return the result object
-		c.JSON(http.StatusOK, gin.H{
-			"uuid":   executionUuid,
-			"result": result,
-		})
+		c.JSON(http.StatusOK, result)
 	})
 
 	router.Run(":8080")
