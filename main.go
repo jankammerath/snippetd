@@ -25,7 +25,7 @@ func GetRuntimeConfig(mimeType string) (snippetd.RuntimeConfig, error) {
 			if mt == mimeType {
 				result := runtime
 
-				runScript, err := configDir.ReadFile("config/" + language + ".sh")
+				runScript, err := configDir.ReadFile("config/runtime/" + language + ".sh")
 				if err != nil {
 					panic(err)
 				}
@@ -109,7 +109,9 @@ func main() {
 		result := codeRuntime.Execute(executionUuid, string(sourceCode), runtimeConfig)
 
 		// return the result object
-		c.JSON(http.StatusOK, result)
+		c.JSON(http.StatusOK, gin.H{
+			"result": result,
+		})
 	})
 
 	router.Run(":8080")
