@@ -6,4 +6,4 @@ cd /app
 dotnet new console -o tempProject -lang vb > /dev/null
 cp Program.vb tempProject/
 cd tempProject
-dotnet run > ../__output 2> ../__error
+dotnet run
