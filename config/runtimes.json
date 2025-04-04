@@ -1,8 +1,8 @@
 {
     "bash": {
         "container": "debian:latest",
-        "fileName": "script.sh",
-        "mimeTypes": [
+        "file_name": "script.sh",
+        "mime_types": [
             "application/x-sh",
             "application/x-bash",
             "text/x-sh",
@@ -11,8 +11,8 @@
     },
     "php": {
         "container": "php:latest",
-        "fileName": "index.php",
-        "mimeTypes": [
+        "file_name": "index.php",
+        "mime_types": [
             "application/x-httpd-php",
             "application/x-php",
             "text/x-php"
@@ -20,8 +20,8 @@
     },
     "python": {
         "container": "python:latest",
-        "fileName": "main.py",
-        "mimeTypes": [
+        "file_name": "main.py",
+        "mime_types": [
             "application/x-python-code",
             "application/x-python",
             "text/x-python"
@@ -29,16 +29,16 @@
     },
     "ruby": {
         "container": "ruby:latest",
-        "fileName": "main.rb",
-        "mimeTypes": [
+        "file_name": "main.rb",
+        "mime_types": [
             "application/x-ruby",
             "text/x-ruby"
         ]
     },
     "javascript": {
         "container": "node:latest",
-        "fileName": "index.js",
-        "mimeTypes": [
+        "file_name": "index.js",
+        "mime_types": [
             "application/javascript",
             "text/javascript",
             "application/x-javascript"
@@ -46,8 +46,8 @@
     },
     "go": {
         "container": "golang:latest",
-        "fileName": "main.go",
-        "mimeTypes": [
+        "file_name": "main.go",
+        "mime_types": [
             "application/x-go",
             "text/x-go",
             "text/x-go-source"
@@ -55,8 +55,8 @@
     },
     "c": {
         "container": "gcc:latest",
-        "fileName": "main.c",
-        "mimeTypes": [
+        "file_name": "main.c",
+        "mime_types": [
             "text/x-c",
             "text/x-c-header",
             "application/x-c",
@@ -65,8 +65,8 @@
     },
     "cpp": {
         "container": "gcc:latest",
-        "fileName": "main.cpp",
-        "mimeTypes": [
+        "file_name": "main.cpp",
+        "mime_types": [
             "text/x-c++",
             "text/x-c++-header",
             "application/x-c++",
@@ -75,8 +75,8 @@
     },
     "csharp": {
         "container": "mcr.microsoft.com/dotnet/sdk:latest",
-        "fileName": "Program.cs",
-        "mimeTypes": [
+        "file_name": "Program.cs",
+        "mime_types": [
             "application/x-csharp",
             "text/x-csharp",
             "text/x-csharp-source"
@@ -84,16 +84,16 @@
     },
     "vbnet": {
         "container": "mcr.microsoft.com/dotnet/sdk:latest",
-        "fileName": "Program.vb",
-        "mimeTypes": [
+        "file_name": "Program.vb",
+        "mime_types": [
             "text/x-vb",
             "application/x-vb"
         ]
     },
     "java": {
         "container": "openjdk:latest",
-        "fileName": "Main.java",
-        "mimeTypes": [
+        "file_name": "Main.java",
+        "mime_types": [
             "text/x-java-source",
             "text/x-java",
             "application/x-java-source",
@@ -103,22 +103,22 @@
     },
     "rust": {
         "container": "rust:latest",
-        "fileName": "main.rs",
-        "mimeTypes": [
+        "file_name": "main.rs",
+        "mime_types": [
             "text/x-rust"
         ]
     },
     "swift": {
         "container": "swift:latest",
-        "fileName": "main.swift",
-        "mimeTypes": [
+        "file_name": "main.swift",
+        "mime_types": [
             "text/x-swift"
         ]
     },
     "typescript": {
         "container": "mcr.microsoft.com/devcontainers/typescript-node",
-        "fileName": "index.ts",
-        "mimeTypes": [
+        "file_name": "index.ts",
+        "mime_types": [
             "application/typescript",
             "text/typescript"
         ]
