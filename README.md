@@ -1,6 +1,6 @@
 # snippetd
 
-`snippetd` (_pronounced as /ˈsnɪpədi/_) is a Linux daemon serving an API that allows executing, interpreting or compiling **code snippets** from various programming languages using containerd and containers from the docker hub.
+`snippetd` or _/ˈsnɪpədi/_ is a Linux daemon serving an API that allows executing, interpreting or compiling **code snippets** from various programming languages using containerd and containers from the docker hub.
 
 ![Hello World in PHP using Postman](doc/postman-php.png)
 
