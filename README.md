@@ -23,7 +23,7 @@ The following programming languages are currently supported with the respective 
 
 | Language     | MIME Types                                                                                                 | Container                                        |
 |--------------|------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| bash         | `application/x-sh`, `application/x-bash`, `text/x-sh`, `text/x-shellscript`                                | `debian:latest`                                  |
+| bash         | `application/x-sh`,<br /> `application/x-bash`,<br /> `text/x-sh`,<br /> `text/x-shellscript`                                | `debian:latest`                                  |
 | php          | `application/x-httpd-php`, `application/x-php`, `text/x-php`                                               | `php:latest`                                     |
 | python       | `application/x-python-code`, `application/x-python`, `text/x-python`                                       | `python:latest`                                  |
 | ruby         | `application/x-ruby`, `text/x-ruby`                                                                        | `ruby:latest`                                    |
