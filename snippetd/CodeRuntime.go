@@ -11,6 +11,7 @@ import (
 	"github.com/containerd/containerd/cio"
 	"github.com/containerd/containerd/namespaces"
 	"github.com/containerd/containerd/oci"
+	"github.com/opencontainers/runtime-spec/specs-go"
 )
 
 const containerdSocket = "/run/containerd/containerd.sock"
@@ -114,16 +115,30 @@ func (runtime *CodeRuntime) Execute(executionUuid, sourceCode string, config Run
 		return CodeExecution{StandardError: fmt.Sprintf("Failed to write run script to file: %v", err)}
 	}
 
-	containerSpec, err := oci.GenerateSpecWithPlatform(ctx, runtime.client, config.Container, nil)
-	if err != nil {
-		return CodeExecution{StandardError: fmt.Sprintf("Failed to generate container spec: %v", err)}
+	specOptions := []oci.SpecOpts{
+		oci.WithDefaultSpec(),
+		oci.WithDefaultUnixDevices,
+		oci.WithTTY,
+		oci.WithMounts([]specs.Mount{
+			{
+				Type:        "bind",
+				Source:      tempDir,
+				Destination: "/app",
+				Options: []string{
+					"rbind",
+					"rw",
+				},
+			},
+		}),
+		oci.WithProcessArgs("/bin/sh", "-c", scriptPath),
 	}
-	containerSpec.Process.Args = []string{"/bin/sh", "/app/exec.sh"}
-	containerSpec.Process.Cwd = "/app"
 
-	container, err := runtime.client.NewContainer(ctx, executionUuid,
+	containerOptions := []containerd.NewContainerOpts{
 		containerd.WithNewSnapshot(executionUuid, containerImage),
-		containerd.WithSpec(containerSpec))
+		containerd.WithNewSpec(specOptions...),
+	}
+
+	container, err := runtime.client.NewContainer(ctx, executionUuid, containerOptions...)
 
 	if err != nil {
 		return CodeExecution{StandardError: fmt.Sprintf("Failed to create container: %v", err)}
