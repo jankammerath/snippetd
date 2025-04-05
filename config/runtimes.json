@@ -1,6 +1,6 @@
 {
     "bash": {
-        "container": "debian:latest",
+        "container": "docker.io/library/debian:latest",
         "file_name": "script.sh",
         "mime_types": [
             "application/x-sh",
@@ -10,7 +10,7 @@
         ]
     },
     "php": {
-        "container": "php:latest",
+        "container": "docker.io/library/php:latest",
         "file_name": "index.php",
         "mime_types": [
             "application/x-httpd-php",
@@ -19,7 +19,7 @@
         ]
     },
     "python": {
-        "container": "python:latest",
+        "container": "docker.io/library/python:latest",
         "file_name": "main.py",
         "mime_types": [
             "application/x-python-code",
@@ -28,7 +28,7 @@
         ]
     },
     "ruby": {
-        "container": "ruby:latest",
+        "container": "docker.io/library/ruby:latest",
         "file_name": "main.rb",
         "mime_types": [
             "application/x-ruby",
@@ -36,7 +36,7 @@
         ]
     },
     "javascript": {
-        "container": "node:latest",
+        "container": "docker.io/library/node:latest",
         "file_name": "index.js",
         "mime_types": [
             "application/javascript",
@@ -45,7 +45,7 @@
         ]
     },
     "go": {
-        "container": "golang:latest",
+        "container": "docker.io/library/golang:latest",
         "file_name": "main.go",
         "mime_types": [
             "application/x-go",
@@ -54,7 +54,7 @@
         ]
     },
     "c": {
-        "container": "gcc:latest",
+        "container": "docker.io/library/gcc:latest",
         "file_name": "main.c",
         "mime_types": [
             "text/x-c",
@@ -64,7 +64,7 @@
         ]
     },
     "cpp": {
-        "container": "gcc:latest",
+        "container": "docker.io/library/gcc:latest",
         "file_name": "main.cpp",
         "mime_types": [
             "text/x-c++",
@@ -91,7 +91,7 @@
         ]
     },
     "java": {
-        "container": "openjdk:latest",
+        "container": "docker.io/library/openjdk:latest",
         "file_name": "Main.java",
         "mime_types": [
             "text/x-java-source",
@@ -102,14 +102,14 @@
         ]
     },
     "rust": {
-        "container": "rust:latest",
+        "container": "docker.io/library/rust:latest",
         "file_name": "main.rs",
         "mime_types": [
             "text/x-rust"
         ]
     },
     "swift": {
-        "container": "swift:latest",
+        "container": "docker.io/library/swift:latest",
         "file_name": "main.swift",
         "mime_types": [
             "text/x-swift"

@@ -89,8 +89,7 @@ func (runtime *CodeRuntime) Execute(executionUuid, sourceCode string, config Run
 	ctx := namespaces.WithNamespace(context.Background(), snippetNamespace)
 
 	// pull the required container for this runtime
-	imageUrl := "docker.io/library/" + config.Container
-	containerImage, err := runtime.client.Pull(ctx, imageUrl, containerd.WithPullUnpack)
+	containerImage, err := runtime.client.Pull(ctx, config.Container, containerd.WithPullUnpack)
 	if err != nil {
 		return CodeExecution{StandardError: fmt.Sprintf("Failed to pull image: %v", err)}
 	}
