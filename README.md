@@ -41,3 +41,35 @@ The following programming languages are currently supported with the respective 
 | Rust         | `text/x-rust`                                                                                                               | `docker.io/library/rust:latest`                   |
 | Swift        | `text/x-swift`                                                                                                              | `docker.io/library/swift:latest`                  |
 | TypeScript   | `application/typescript`<br />`text/typescript`                                                                             | `mcr.microsoft.com/devcontainers/typescript-node` |
+
+## Installation
+
+`snippetd` is currently a very early version. You can create a systemd service file yourself, if you want to. Once it is stable enough, this repository will contain one.
+
+### Containerd socket permissions
+
+Whatever user runs the snippetd daemon will need permission to access the containerd socket.
+
+1. Create a new group (if needed): 
+```bash
+sudo groupadd containerd-users
+```
+
+2. Add `user` _(name of the user that runs it)_ to the new group:
+```bash
+sudo usermod -aG containerd-users jan
+```
+
+3. Change the group ownership of the socket: 
+```bash
+sudo chgrp containerd-users /run/containerd/containerd.sock
+```
+
+4. Change the group permissions of the socket: 
+```bash
+sudo chmod g+rw /run/containerd/containerd.sock
+```
+
+## Security
+
+There are security considerations for this application as it allows executing containers and arbitrary code. It is important that you understand the impact of this application, the lack of authentication and security. This aims to serve as a sandboxed sidecar for any application that wishes to execute arbitrary code on Linux.
