@@ -1,6 +1,6 @@
 # snippetd
 
-A Linux daemon serving an API that allows executing, interpreting or compiling source code from various programming languages using containerd and containers from the docker hub.
+A Linux daemon serving an API that allows executing, interpreting or compiling **code snippets** from various programming languages using containerd and containers from the docker hub.
 
 ![Hello World in PHP using Postman](doc/postman-php.png)
 
