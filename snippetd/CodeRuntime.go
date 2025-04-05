@@ -115,6 +115,8 @@ func (runtime *CodeRuntime) Execute(executionUuid, sourceCode string, config Run
 		return CodeExecution{StandardError: fmt.Sprintf("Failed to write run script to file: %v", err)}
 	}
 
+	fmt.Println("Exection temporarily stored in: ", tempDir)
+
 	specOptions := []oci.SpecOpts{
 		oci.WithDefaultSpec(),
 		oci.WithDefaultUnixDevices,
@@ -129,7 +131,8 @@ func (runtime *CodeRuntime) Execute(executionUuid, sourceCode string, config Run
 				},
 			},
 		}),
-		oci.WithProcessArgs("/bin/sh", "-c", scriptPath),
+		oci.WithProcessCwd("/app"),
+		oci.WithProcessArgs("/bin/sh", "-c", "/app/exec.sh"),
 	}
 
 	containerOptions := []containerd.NewContainerOpts{
