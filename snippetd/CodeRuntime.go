@@ -114,8 +114,6 @@ func (runtime *CodeRuntime) Execute(executionUuid, sourceCode string, config Run
 		return CodeExecution{StandardError: fmt.Sprintf("Failed to write run script to file: %v", err)}
 	}
 
-	fmt.Println("Exection temporarily stored in: ", tempDir)
-
 	specOptions := []oci.SpecOpts{
 		oci.WithDefaultSpec(),
 		oci.WithDefaultUnixDevices,
