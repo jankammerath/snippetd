@@ -117,6 +117,10 @@ func (runtime *CodeRuntime) Execute(executionUuid, sourceCode string, config Run
 	specOptions := []oci.SpecOpts{
 		oci.WithDefaultSpec(),
 		oci.WithDefaultUnixDevices,
+		oci.WithHostHostsFile,
+		oci.WithHostResolvconf,
+		oci.WithHostLocaltime,
+		oci.WithHostNamespace(specs.NetworkNamespace),
 		oci.WithMounts([]specs.Mount{
 			{
 				Type:        "bind",

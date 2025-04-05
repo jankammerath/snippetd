@@ -139,3 +139,14 @@ Module WeatherFetcher
 
 End Module
 ```
+
+If everything works fine and as expected, the output of the Visual Basic .NET app should be the weather in Redmond, WA in the following JSON format.
+
+```json
+{
+    "result": {
+        "uuid": "c0241b3e-c0c5-44e0-ab09-890dcd5e50bd",
+        "standard_output": "Fetching current temperature for Redmond, WA...\nCurrent Temperature in Redmond, WA:\n  Celsius: 7.3°C\n  Fahrenheit: 45.14°F\n"
+    }
+}
+```
