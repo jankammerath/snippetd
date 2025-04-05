@@ -4,6 +4,8 @@
 
 ![Hello World in PHP using Postman](doc/postman-php.png)
 
+![Hello World in Visual Basic .NET using Postman](doc/postman-vbnet.png)
+
 ## Usage
 
 The API is very simple as it only provides a basic banner in the root `/`, a list of all supported programming language runtimes under `/runtimes` and the execution of code under `/execute`.
