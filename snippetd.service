@@ -1,0 +1,13 @@
+[Unit]
+Description=snippetd - Code Execution Service
+After=network.target containerd.service
+
+[Service]
+User=snippetd
+Group=containerd
+ExecStart=/bin/snippetd
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
