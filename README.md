@@ -17,7 +17,7 @@ curl -X POST \
 
 When posting a source code to the endpoint, it will check if the `Content-Type` _(MIME Type)_ is supported. If the language is supported, it'll create a temporary folder on the host, a container for the language with the temporary folder that includes the default source file name and the execution shell script. The shell scripts can be found in the [config/runtime](config/runtime). 
 
-## Supported languages
+### Supported languages
 
 The following programming languages are currently supported with the respective MIME types and containers.
 
