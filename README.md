@@ -2,7 +2,7 @@
 
 A Linux daemon serving an API that allows executing, interpreting or compiling source code from various programming languages using containerd and containers from the docker hub.
 
-(Hello World in PHP using Postman)[doc/postman-php.png]
+![Hello World in PHP using Postman](doc/postman-php.png)
 
 ## Usage
 
@@ -15,7 +15,7 @@ curl -X POST \
     http://192.168.1.3:8080/execute
 ```
 
-When posting a source code to the endpoint, it will check if the `Content-Type` _(MIME Type)_ is supported. If the language is supported, it'll create a temporary folder on the host, a container for the language with the temporary folder that includes the default source file name and the execution shell script. The shell scripts can be found in the (config/runtime)[config/runtime]. 
+When posting a source code to the endpoint, it will check if the `Content-Type` _(MIME Type)_ is supported. If the language is supported, it'll create a temporary folder on the host, a container for the language with the temporary folder that includes the default source file name and the execution shell script. The shell scripts can be found in the [config/runtime](config/runtime). 
 
 ## Supported languages
 
