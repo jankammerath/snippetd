@@ -118,7 +118,6 @@ func (runtime *CodeRuntime) Execute(executionUuid, sourceCode string, config Run
 	specOptions := []oci.SpecOpts{
 		oci.WithDefaultSpec(),
 		oci.WithDefaultUnixDevices,
-		oci.WithTTY,
 		oci.WithMounts([]specs.Mount{
 			{
 				Type:        "bind",
@@ -156,8 +155,21 @@ func (runtime *CodeRuntime) Execute(executionUuid, sourceCode string, config Run
 		return CodeExecution{StandardError: fmt.Sprintf("Failed to create stderr pipe: %v", err)}
 	}
 
+	// After creating the container and before creating the task:
+	fifoDir, err := os.MkdirTemp("", "containerd-fifo-"+executionUuid)
+	if err != nil {
+		return CodeExecution{StandardError: fmt.Sprintf("Failed to create fifo directory: %v", err)}
+	}
+	defer os.RemoveAll(fifoDir) // Clean up after execution
+
 	// Configure container I/O with the pipes
-	task, err := container.NewTask(ctx, cio.NewCreator(cio.WithStreams(nil, stdoutWriter, stderrWriter)))
+	task, err := container.NewTask(ctx, cio.NewCreator(
+		cio.WithStreams(nil, stdoutWriter, stderrWriter),
+		// Use custom FIFO directory to prevent permission issues
+		// when running as a non-root user
+		cio.WithFIFODir(fifoDir),
+	))
+
 	if err != nil {
 		stdoutReader.Close()
 		stdoutWriter.Close()
