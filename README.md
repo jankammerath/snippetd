@@ -1,3 +1,6 @@
+> [!WARNING]  
+> This is an application that can execute arbitrary code without authentication. It is published for research and development purposes. Do not use this application if you do not understand its nature.
+
 # snippetd
 
 `snippetd` or _/ˈsnɪpədi/_ is a Linux daemon serving an API that allows executing, interpreting or compiling **code snippets** from various programming languages using containerd and containers from the docker hub.
