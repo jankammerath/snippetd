@@ -47,30 +47,13 @@ The following programming languages are currently supported with the respective 
 
 ## Installation
 
-`snippetd` is currently a very early version. You can create a systemd service file yourself, if you want to. Once it is stable enough, this repository will contain one.
+`snippetd` comes with the `install.sh` script for Linux that will install the systemd service with the `snippetd.service` file, create the `snippetd` user and the `containerd` group, change group ownership and permissions of the containerd socket. Afterwards it'll start the systemd service.
 
-### Containerd socket permissions
+> [!WARNING]  
+> Make sure you are 100% aware of what this application does and how the install script works. Check the script before executing it! **Snippetd has no authentication, do not run it in public!**
 
-Whatever user runs the snippetd daemon will need permission to access the containerd socket.
-
-1. Create a new group (if needed): 
 ```bash
-sudo groupadd containerd-users
-```
-
-2. Add `user` _(name of the user that runs it)_ to the new group:
-```bash
-sudo usermod -aG containerd-users jan
-```
-
-3. Change the group ownership of the socket: 
-```bash
-sudo chgrp containerd-users /run/containerd/containerd.sock
-```
-
-4. Change the group permissions of the socket: 
-```bash
-sudo chmod g+rw /run/containerd/containerd.sock
+./install.sh
 ```
 
 ## Security
