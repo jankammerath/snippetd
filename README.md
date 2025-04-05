@@ -21,19 +21,19 @@ When posting a source code to the endpoint, it will check if the `Content-Type` 
 
 The following programming languages are currently supported with the respective MIME types and containers.
 
-| Language     | MIME Types                                                                                                 | Container                                        |
-|--------------|------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| bash         | `application/x-sh`,<br /> `application/x-bash`,<br /> `text/x-sh`,<br /> `text/x-shellscript`                                | `debian:latest`                                  |
-| php          | `application/x-httpd-php`, `application/x-php`, `text/x-php`                                               | `php:latest`                                     |
-| python       | `application/x-python-code`, `application/x-python`, `text/x-python`                                       | `python:latest`                                  |
-| ruby         | `application/x-ruby`, `text/x-ruby`                                                                        | `ruby:latest`                                    |
-| javascript   | `application/javascript`, `text/javascript`, `application/x-javascript`                                    | `node:latest`                                    |
-| go           | `application/x-go`, `text/x-go`, `text/x-go-source`                                                        | `golang:latest`                                  |
-| c            | `text/x-c`, `text/x-c-header`, `application/x-c`, `application/x-c-header`                                 | `gcc:latest`                                     |
-| cpp          | `text/x-c++`, `text/x-c++-header`, `application/x-c++`, `application/x-c++-header`                         | `gcc:latest`                                     |
-| csharp       | `application/x-csharp`, `text/x-csharp`, `text/x-csharp-source`                                            | `mcr.microsoft.com/dotnet/sdk:latest`            |
-| vbnet        | `text/x-vb`, `application/x-vb`                                                                            | `mcr.microsoft.com/dotnet/sdk:latest`            |
-| java         | `text/x-java-source`, `text/x-java`, `application/x-java-source`, `application/x-java`, `application/java` | `openjdk:latest`                                 |
-| rust         | `text/x-rust`                                                                                              | `rust:latest`                                    |
-| swift        | `text/x-swift`                                                                                             | `swift:latest`                                   |
-| typescript   | `application/typescript`, `text/typescript`                                                                | `mcr.microsoft.com/devcontainers/typescript-node` |
+| Language     | MIME Types                                                                                                                  | Container                                        |
+|--------------|-----------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| bash         | `application/x-sh`<br />`application/x-bash`<br />`text/x-sh`<br />`text/x-shellscript`                                     | `debian:latest`                                  |
+| php          | `application/x-httpd-php`<br />`application/x-php`<br />`text/x-php`                                                        | `php:latest`                                     |
+| python       | `application/x-python-code`<br />`application/x-python`,<br />`text/x-python`                                               | `python:latest`                                  |
+| ruby         | `application/x-ruby`<br />`text/x-ruby`                                                                                     | `ruby:latest`                                    |
+| javascript   | `application/javascript`<br />`text/javascript`<br />`application/x-javascript`                                             | `node:latest`                                    |
+| go           | `application/x-go`<br />`text/x-go`<br />`text/x-go-source`                                                                 | `golang:latest`                                  |
+| c            | `text/x-c`<br />`text/x-c-header`<br />`application/x-c`<br />`application/x-c-header`                                      | `gcc:latest`                                     |
+| cpp          | `text/x-c++`<br />`text/x-c++-header`<br />`application/x-c++`<br />`application/x-c++-header`                              | `gcc:latest`                                     |
+| csharp       | `application/x-csharp`<br />`text/x-csharp`<br />`text/x-csharp-source`                                                     | `mcr.microsoft.com/dotnet/sdk:latest`            |
+| vbnet        | `text/x-vb`<br />`application/x-vb`                                                                                         | `mcr.microsoft.com/dotnet/sdk:latest`            |
+| java         | `text/x-java-source`<br />`text/x-java`<br /> `application/x-java-source`<br />`application/x-java`<br />`application/java` | `openjdk:latest`                                 |
+| rust         | `text/x-rust`                                                                                                               | `rust:latest`                                    |
+| swift        | `text/x-swift`                                                                                                              | `swift:latest`                                   |
+| typescript   | `application/typescript`<br />`text/typescript`                                                                             | `mcr.microsoft.com/devcontainers/typescript-node` |
