@@ -63,7 +63,7 @@ func main() {
 
 	router.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-			"message": "Snipper service operational",
+			"message": "Snippetd operational",
 		})
 	})
 
