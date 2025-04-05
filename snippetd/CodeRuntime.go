@@ -96,7 +96,7 @@ func (runtime *CodeRuntime) Execute(executionUuid, sourceCode string, config Run
 	}
 
 	// create a temporary directory with the provided uuid
-	tempDir, err := os.MkdirTemp("", executionUuid)
+	tempDir, err := os.MkdirTemp("", "snippetd_"+executionUuid)
 	if err != nil {
 		return CodeExecution{StandardError: fmt.Sprintf("Failed to create temp dir: %v", err)}
 	}
