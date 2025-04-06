@@ -6,6 +6,12 @@ init:
     - linuxkit/runc:667e7ea2c426a2460ca21e3da065a57dbb3369c9
     - linuxkit/containerd:a988a1a8bcbacc2c0390ca0c08f949e2b4b5915d
     - linuxkit/ca-certificates:7b32a26ca9c275d3ef32b11fe2a83dbd2aee2fdb
+onboot:
+  - name: sysctl
+    image: linuxkit/sysctl:5f56434b81004b50b47ed629b222619168c2bcdf
+  - name: dhcpcd
+    image: linuxkit/dhcpcd:157df9ef45a035f1542ec2270e374f18efef98a5
+    command: ["/sbin/dhcpcd", "--nobackground", "-f", "/dhcpcd.conf", "-1"]
 services:
     - name: snippetd
       image: alpine:3.13
@@ -21,6 +27,7 @@ services:
       binds:
         - /usr/bin/snippetd:/usr/bin/snippetd
       command: [/usr/bin/snippetd]
+      net: host
 files:
     - path: /usr/bin/snippetd
       source: bin/snippetd
