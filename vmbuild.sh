@@ -8,7 +8,7 @@ fi
 
 # Check if LinuxKit is installed
 if ! command -v linuxkit >/dev/null 2>&1; then
-  echo "linuxkit is not installed. Please install it."
+  echo "LinuxKit is not installed. Please install it."
   exit 1
 fi
 
@@ -17,10 +17,10 @@ echo "Building for arm64 linux..."
 GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o ./bin/snippetd ./main.go
 echo "Building for arm64 linux done."
 
-# Ensure the ./vm directory exists
-mkdir -p vm
+# Ensure the ./linuxkit directory exists
+mkdir -p linuxkit
 
-# Build the LinuxKit image into the vm folder
+# Build the LinuxKit image into the linuxkit folder
 echo "Building the LinuxKit image..."
-linuxkit build --dir ./vm linuxkit.yml
+linuxkit build --dir ./linuxkit linuxkit.yml
 echo "Building the LinuxKit image done."
