@@ -1,0 +1,38 @@
+kernel:
+    image: "linuxkit/kernel:5.15"
+    cmdline: "console=ttyS0"
+init:
+    - linuxkit/init:v0.9
+    - linuxkit/runc:v0.7
+    - linuxkit/containerd:v1.6
+services:
+    - name: snippetd
+      image: "snippetd"
+      command: ["/bin/snippetd"]
+      restart: true
+onboot:
+    - name: boot
+      image: "linuxkit/systemd:v3"
+      command: ["/sbin/init"]
+files:
+    - path: etc/systemd/system/snippetd.service
+      contents: |
+        [Unit]
+        Description=Snippetd Service
+        After=network.target containerd.service
+        Requires=containerd.service
+
+        [Service]
+        ExecStart=/bin/snippetd
+        Restart=on-failure
+
+        [Install]
+        WantedBy=multi-user.target
+trust:
+    org:
+    - linuxkit
+image:
+    - name: snippetd
+      contents:
+        - path: /bin/snippetd
+          source: ./bin/snippetd
