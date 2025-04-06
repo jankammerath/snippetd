@@ -14,5 +14,5 @@ fi
 
 # Run the LinuxKit image with Apple Virtualization framework
 echo "Running the LinuxKit image..."
-linuxkit run virtualization linuxkit
+linuxkit run virtualization linuxkit/linuxkit
 echo "Running the LinuxKit image done."
