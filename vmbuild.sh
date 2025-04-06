@@ -19,5 +19,5 @@ echo "Building for arm64 linux done."
 
 # Build the LinuxKit image into the vm folder
 echo "Building the LinuxKit image..."
-linuxkit build --o ./vm linuxkit.yml
+linuxkit build --dir ./vm linuxkit.yml
 echo "Building the LinuxKit image done."
