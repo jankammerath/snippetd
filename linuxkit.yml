@@ -6,30 +6,17 @@ init:
     - linuxkit/runc:667e7ea2c426a2460ca21e3da065a57dbb3369c9
     - linuxkit/containerd:a988a1a8bcbacc2c0390ca0c08f949e2b4b5915d
     - linuxkit/ca-certificates:7b32a26ca9c275d3ef32b11fe2a83dbd2aee2fdb
-services:
-    - name: snippetd
-      image: "snippetd"
-      command: ["/bin/snippetd"]
 onboot:
-    - name: boot
-      image: "linuxkit/systemd:v3"
-      command: ["/sbin/init"]
+    - name: snippetd
+      image: alpine:3.13
+      capabilities:
+        - CAP_NET_RAW
+        - CAP_NET_ADMIN
+      command: ["/bin/snippetd"]
 files:
     - path: /bin/snippetd
       source: ./bin/snippetd
-    - path: etc/systemd/system/snippetd.service
-      contents: |
-        [Unit]
-        Description=Snippetd Service
-        After=network.target containerd.service
-        Requires=containerd.service
-
-        [Service]
-        ExecStart=/bin/snippetd
-        Restart=on-failure
-
-        [Install]
-        WantedBy=multi-user.target
+      mode: "0755"
 trust:
     org:
     - linuxkit

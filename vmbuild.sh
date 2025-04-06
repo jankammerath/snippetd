@@ -17,6 +17,9 @@ echo "Building for arm64 linux..."
 GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o ./bin/snippetd ./main.go
 echo "Building for arm64 linux done."
 
+# Ensure the ./vm directory exists
+mkdir -p vm
+
 # Build the LinuxKit image into the vm folder
 echo "Building the LinuxKit image..."
 linuxkit build --dir ./vm linuxkit.yml
