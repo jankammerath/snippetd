@@ -108,6 +108,8 @@ func main() {
 		executionUuid := uuid.New().String()
 		result := codeRuntime.Execute(executionUuid, string(sourceCode), runtimeConfig)
 
+		c.Header("X-Container-Runtime", runtimeConfig.Container)
+
 		// return the result object
 		c.JSON(http.StatusOK, gin.H{
 			"result": result,
