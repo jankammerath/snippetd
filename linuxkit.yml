@@ -6,16 +6,24 @@ init:
     - linuxkit/runc:667e7ea2c426a2460ca21e3da065a57dbb3369c9
     - linuxkit/containerd:a988a1a8bcbacc2c0390ca0c08f949e2b4b5915d
     - linuxkit/ca-certificates:7b32a26ca9c275d3ef32b11fe2a83dbd2aee2fdb
-onboot:
+services:
     - name: snippetd
       image: alpine:3.13
       capabilities:
         - CAP_NET_RAW
         - CAP_NET_ADMIN
-      command: ["/bin/snippetd"]
+        - CAP_SYS_ADMIN
+        - CAP_NET_BIND_SERVICE
+        - CAP_CHOWN
+        - CAP_SETUID
+        - CAP_SETGID
+        - CAP_DAC_OVERRIDE
+      binds:
+        - /usr/bin/snippetd:/usr/bin/snippetd
+      command: [/usr/bin/snippetd]
 files:
-    - path: /bin/snippetd
-      source: ./bin/snippetd
+    - path: /usr/bin/snippetd
+      source: bin/snippetd
       mode: "0755"
 trust:
     org:
