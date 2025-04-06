@@ -14,7 +14,7 @@ fi
 
 # Build for arm64 linux 
 echo "Building for arm64 linux..."
-GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o ./bin/snippetd ./main.go
+GOOS=linux GOARCH=arm64 CGO_ENABLED=1 go build -o ./bin/snippetd ./main.go
 echo "Building for arm64 linux done."
 
 # Ensure the ./linuxkit directory exists

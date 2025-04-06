@@ -56,6 +56,27 @@ The following programming languages are currently supported with the respective 
 ./install.sh
 ```
 
+### LinuxKit for macOS
+
+The `vmbuild.sh` script builds a LinuxKit virtual machine image for `darwin/arm64` _(Apple Silicon Mac)_ and `vmrun.sh` allows running the vm with the _Apple Virtualization_ framework on macOS.
+
+#### Signing LinutKit with the virtualization entitlement
+
+If you are receiving an error with a message like the following when executing `vmrun.sh`, you need to sign LinuxKit.
+
+```bash
+FATA[0000] validation failedError Domain=VZErrorDomain Code=2 Description="Invalid virtual machine configuration. The process doesn’t have the “com.apple.security.virtualization” entitlement." UserInfo={
+    NSLocalizedFailure = "Invalid virtual machine configuration.";
+    NSLocalizedFailureReason = "The process doesn\U2019t have the \U201ccom.apple.security.virtualization\U201d entitlement.";
+} 
+```
+
+This requires Xcode and the necessary developer tools as well as accounts to be present on your macOS. If you have all of them perfectly installed, you can use the `codesign-linuxkit.sh` shell script to sign your LinuxKit binary.
+
+```bash
+sudo ./codesign-linuxkit.sh
+```
+
 ## Security
 
 There are security considerations for this application as it allows executing containers and arbitrary code. It is important that you understand the impact of this application, the lack of authentication and security. This aims to serve as a sandboxed sidecar for any application that wishes to execute arbitrary code on Linux.
