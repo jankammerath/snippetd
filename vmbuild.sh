@@ -13,4 +13,11 @@ if ! command -v linuxkit >/dev/null 2>&1; then
 fi
 
 # Build for arm64 linux 
+echo "Building for arm64 linux..."
 GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o ./bin/snippetd ./main.go
+echo "Building for arm64 linux done."
+
+# Build the LinuxKit image into the vm folder
+echo "Building the LinuxKit image..."
+linuxkit build --o ./vm linuxkit.yml
+echo "Building the LinuxKit image done."

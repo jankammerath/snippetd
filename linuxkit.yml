@@ -10,12 +10,13 @@ services:
     - name: snippetd
       image: "snippetd"
       command: ["/bin/snippetd"]
-      restart: true
 onboot:
     - name: boot
       image: "linuxkit/systemd:v3"
       command: ["/sbin/init"]
 files:
+    - path: /bin/snippetd
+      source: ./bin/snippetd
     - path: etc/systemd/system/snippetd.service
       contents: |
         [Unit]
@@ -32,8 +33,3 @@ files:
 trust:
     org:
     - linuxkit
-image:
-    - name: snippetd
-      contents:
-        - path: /bin/snippetd
-          source: ./bin/snippetd
