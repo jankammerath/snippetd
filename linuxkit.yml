@@ -1,10 +1,11 @@
 kernel:
-    image: "linuxkit/kernel:5.15"
-    cmdline: "console=ttyS0"
+    image: linuxkit/kernel:6.6.71
+    cmdline: "console=tty0 console=ttyS0 console=ttyAMA0"
 init:
-    - linuxkit/init:v0.9
-    - linuxkit/runc:v0.7
-    - linuxkit/containerd:v1.6
+    - linuxkit/init:8eea386739975a43af558eec757a7dcb3a3d2e7b
+    - linuxkit/runc:667e7ea2c426a2460ca21e3da065a57dbb3369c9
+    - linuxkit/containerd:a988a1a8bcbacc2c0390ca0c08f949e2b4b5915d
+    - linuxkit/ca-certificates:7b32a26ca9c275d3ef32b11fe2a83dbd2aee2fdb
 services:
     - name: snippetd
       image: "snippetd"
