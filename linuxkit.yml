@@ -24,9 +24,9 @@ services:
         - /etc:/hostroot/etc
         - /usr/bin/ctr:/usr/bin/ctr
         - /usr/bin/runc:/usr/bin/runc
-        - /containers:/containers
         - /var/log:/var/log
         - /var/lib/containerd:/var/lib/containerd
+        - /run/containerd/containerd.sock:/run/containerd/containerd.sock
         - /dev:/dev
         - /sys:/sys
       capabilities:
