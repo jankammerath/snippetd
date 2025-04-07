@@ -14,7 +14,7 @@ onboot:
     command: ["/sbin/dhcpcd", "--nobackground", "-f", "/dhcpcd.conf", "-1"]
 services:
     - name: snippetd
-      image: alpine:3.13
+      image: docker.io/library/snippetd:latest
       capabilities:
         - CAP_NET_RAW
         - CAP_NET_ADMIN
@@ -24,13 +24,7 @@ services:
         - CAP_SETUID
         - CAP_SETGID
         - CAP_DAC_OVERRIDE
-      binds:
-        - /usr/bin/snippetd:/usr/bin/snippetd
-      command: ["/usr/bin/snippetd"]
-files:
-    - path: /usr/bin/snippetd
-      source: bin/snippetd
-      mode: "0755"
+      net: host
 trust:
     org:
     - linuxkit

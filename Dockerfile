@@ -1,5 +1,5 @@
 # Use an ARM64 base image
-FROM arm64v8/ubuntu:latest
+FROM arm64v8/alpine:3.13
 
 # Set the working directory inside the container
 WORKDIR /app
