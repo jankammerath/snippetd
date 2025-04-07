@@ -14,26 +14,18 @@ onboot:
     command: ["/sbin/dhcpcd", "--nobackground", "-f", "/dhcpcd.conf", "-1"]
 services:
     - name: snippetd
-      image: jankammerath/snippetd:latest
+      image: alpine:latest
       net: host
-      pid: host
       binds:
-        - /etc/resolv.conf:/etc/resolv.conf
-        - /run:/run
-        - /tmp:/tmp
-        - /etc:/hostroot/etc
-        - /usr/bin/ctr:/usr/bin/ctr
-        - /usr/bin/runc:/usr/bin/runc
-        - /var/log:/var/log
-        - /var/lib/containerd:/var/lib/containerd
         - /run/containerd/containerd.sock:/run/containerd/containerd.sock
-        - /dev:/dev
-        - /sys:/sys
+        - /app/snippetd:/app/snippetd
+      command: ["/app/snippetd"]
       capabilities:
         - all
-      devices:
-        - path: all
-          type: a
+files:
+    - path: /app/snippetd
+      source: ./bin/snippetd
+      mode: "0755"
 trust:
     org:
     - linuxkit
