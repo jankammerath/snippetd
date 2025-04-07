@@ -12,11 +12,6 @@ if ! command -v linuxkit >/dev/null 2>&1; then
   exit 1
 fi
 
-# Build for arm64 linux 
-echo "Building for arm64 linux..."
-GOOS=linux GOARCH=arm64 CGO_ENABLED=1 go build -o ./bin/snippetd ./main.go
-echo "Building for arm64 linux done."
-
 # Ensure the ./linuxkit directory exists
 mkdir -p linuxkit
 

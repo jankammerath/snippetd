@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"net/http"
+	"syscall"
 
 	"embed"
 
@@ -40,6 +41,15 @@ func GetRuntimeConfig(mimeType string) (snippetd.RuntimeConfig, error) {
 	return snippetd.RuntimeConfig{}, errors.New("Mime type not supported: " + mimeType)
 }
 
+func GetDiskSpace() (uint64, error) {
+	var stat syscall.Statfs_t
+	err := syscall.Statfs("/", &stat)
+	if err != nil {
+		return 0, err
+	}
+	return stat.Bavail * uint64(stat.Bsize), nil
+}
+
 func main() {
 	router := gin.Default()
 
@@ -62,8 +72,17 @@ func main() {
 	defer codeRuntime.Close()
 
 	router.GET("/", func(c *gin.Context) {
+		diskSpace, err := GetDiskSpace()
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": err.Error(),
+			})
+			return
+		}
+
 		c.JSON(http.StatusOK, gin.H{
-			"message": "Snippetd operational",
+			"banner":    "Snippetd",
+			"diskSpace": diskSpace,
 		})
 	})
 
