@@ -27,7 +27,6 @@ services:
       binds:
         - /usr/bin/snippetd:/usr/bin/snippetd
       command: ["/usr/bin/snippetd"]
-      net: host
 files:
     - path: /usr/bin/snippetd
       source: bin/snippetd
