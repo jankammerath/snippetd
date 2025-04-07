@@ -77,6 +77,15 @@ This requires Xcode and the necessary developer tools as well as accounts to be 
 sudo ./codesign-linuxkit.sh
 ```
 
+#### Docker image deployment
+
+Deplying the image to the Docker hub so it can be fetched by LinuxKit. The `dockerbuild.sh` allows building it before.
+
+```bash
+docker tag snippetd jankammerath/snippetd:latest
+docker push jankammerath/snippetd:latest
+```
+
 ## Security
 
 There are security considerations for this application as it allows executing containers and arbitrary code. It is important that you understand the impact of this application, the lack of authentication and security. This aims to serve as a sandboxed sidecar for any application that wishes to execute arbitrary code on Linux.

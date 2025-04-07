@@ -1,5 +1,5 @@
 # Use an ARM64 base image
-FROM arm64v8/alpine:3.13
+FROM linuxkit/alpine:35b33c6b03c40e51046c3b053dd131a68a26c37a
 
 # Set the working directory inside the container
 WORKDIR /app
