@@ -17,5 +17,5 @@ mkdir -p linuxkit
 
 # Build the LinuxKit image into the linuxkit folder
 echo "Building the LinuxKit image..."
-linuxkit build --dir ./linuxkit --size "8192M" linuxkit.yml
+linuxkit build --dir ./linuxkit --decompress-kernel linuxkit.yml
 echo "Building the LinuxKit image done."
