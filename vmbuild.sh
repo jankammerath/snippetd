@@ -13,6 +13,7 @@ if ! command -v linuxkit >/dev/null 2>&1; then
 fi
 
 # Ensure the ./linuxkit directory exists
+rm -r linuxkit
 mkdir -p linuxkit
 
 # Build the LinuxKit image into the linuxkit folder

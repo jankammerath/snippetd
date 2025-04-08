@@ -9,13 +9,19 @@ init:
 onboot:
   - name: sysctl
     image: linuxkit/sysctl:5f56434b81004b50b47ed629b222619168c2bcdf
+  - name: sysfs
+    image: linuxkit/sysfs:7345172dbf4d436c861adfc27150af474194289b
   - name: dhcpcd
     image: linuxkit/dhcpcd:157df9ef45a035f1542ec2270e374f18efef98a5
     command: ["/sbin/dhcpcd", "--nobackground", "-f", "/dhcpcd.conf", "-1"]
   - name: mount
     image: linuxkit/mount:cb8caa72248f7082fc2074ce843d53cdc15df04a
-    command: ["/bin/mount", "-t", "virtiofs", "containers", "/var/lib"]
+    command: ["/bin/mount", "-t", "virtuous", "virtiofs0", "/var/lib"]
 services:
+    - name: getty
+      image: linuxkit/getty:05eca453695984a69617f1f1f0bcdae7f7032967
+      env:
+        - INSECURE=true
     - name: snippetd
       image: alpine:latest
       net: host
