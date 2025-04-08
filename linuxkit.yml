@@ -12,6 +12,9 @@ onboot:
   - name: dhcpcd
     image: linuxkit/dhcpcd:157df9ef45a035f1542ec2270e374f18efef98a5
     command: ["/sbin/dhcpcd", "--nobackground", "-f", "/dhcpcd.conf", "-1"]
+  - name: mount
+    image: linuxkit/mount:cb8caa72248f7082fc2074ce843d53cdc15df04a
+    command: ["/bin/mount", "-t", "virtiofs", "containers", "/var/lib"]
 services:
     - name: snippetd
       image: alpine:latest

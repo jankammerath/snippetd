@@ -12,7 +12,10 @@ if ! command -v linuxkit >/dev/null 2>&1; then
   exit 1
 fi
 
+# ensure the shared directory exists
+mkdir -p containers
+
 # Run the LinuxKit image with Apple Virtualization framework
 echo "Running the LinuxKit image..."
-linuxkit run virtualization linuxkit/linuxkit
+linuxkit run virtualization --virtiofs="containers" linuxkit/linuxkit
 echo "Running the LinuxKit image done."
