@@ -16,7 +16,7 @@ onboot:
     command: ["/sbin/dhcpcd", "--nobackground", "-f", "/dhcpcd.conf", "-1"]
   - name: mount
     image: linuxkit/mount:cb8caa72248f7082fc2074ce843d53cdc15df04a
-    command: ["/bin/mount", "-t", "virtuous", "virtiofs0", "/var/lib"]
+    command: ["/bin/mount", "-t", "virtiofs", "virtiofs0", "/var/lib"]
 services:
     - name: getty
       image: linuxkit/getty:05eca453695984a69617f1f1f0bcdae7f7032967
