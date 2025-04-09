@@ -13,7 +13,7 @@ onboot:
     image: linuxkit/sysfs:7345172dbf4d436c861adfc27150af474194289b
   - name: modprobe
     image: linuxkit/modprobe:773ee174006ecbb412830e48889795bae40b62f9
-    command: ["modprobe", "virtiofs"]
+    command: ["modprobe", "-a", "virtiofs"]
   - name: dhcpcd
     image: linuxkit/dhcpcd:157df9ef45a035f1542ec2270e374f18efef98a5
     command: ["/sbin/dhcpcd", "--nobackground", "-f", "/dhcpcd.conf", "-1"]
